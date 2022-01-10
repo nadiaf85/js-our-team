@@ -32,36 +32,25 @@ const team = [
 ];
 
 
-//Creo click al bottone
 
 let bottone = document.getElementById('addMemberButton');
-bottone.addEventListener ('click',datiTeam);
+bottone.addEventListener ('click',function(){});
 
 
-//Creo funzione con i dati del Team
 
-function datiTeam(){
-  for (let i =0; i <team.length; i++){
-    let membriCorrenti = team[i];
-    aggiuntaNuoveCard(membriCorrenti);
-  }
-};
+let teamContainer = document.querySelector('.team-container');
 
-
-//Creo funzione per aggiungere nuove card al team
-
-function aggiuntaNuoveCard (name,role,image){
-  let nuovaCard = `<div class="team-card">
-                    <div class="card-image">
-                      <img
-                        src="img/${image}"
-                        alt="${name}"
-                        />
-                      </div>
-                      <div class="card-text">
-                        <h3>${name}</h3>
-                        <p>${role}</p>
-                      </div>
-                    </div>`;
-document.querySelector('.team-container').innerHTML += nuovaCard;
-}
+  for (let i =1; i <team.length; i++){
+    teamContainer.innerHTML+= `<div class="team-card">
+    <div class="card-image">
+      <img
+        src="img/${team[i].image}"
+        alt="${team[i].name}"
+        />
+      </div>
+      <div class="card-text">
+        <h3>${team[i].name}</h3>
+        <p>${team[i].role}</p>
+      </div>
+    </div>`
+  };
