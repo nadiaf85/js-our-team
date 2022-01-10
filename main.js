@@ -34,8 +34,7 @@ const team = [
 
 
 let bottone = document.getElementById('addMemberButton');
-bottone.addEventListener ('click',function(){});
-
+bottone.addEventListener ('click',creaDatiMembri);
 
 
 let teamContainer = document.querySelector('.team-container');
@@ -54,3 +53,34 @@ let teamContainer = document.querySelector('.team-container');
       </div>
     </div>`
   };
+
+
+  // Creo funzione per creare dati dei membri
+
+  function creaDatiMembri(){
+    let nuovoMembro = {};
+    nuovoMembro.name = document.getElementById('name').value;
+    nuovoMembro.role = document.getElementById('role').value;
+    nuovoMembro.image = document.getElementById('image').value;
+    team.push(nuovoMembro);
+    creaNuovaCard(nuovoMembro.name,nuovoMembro.role,nuovoMembro.image)
+    console.log(team)
+  }
+
+  // Creo funzione per creare nuove card
+
+  function creaNuovaCard(name, role, image){
+  let nuovaCard = `<div class="team-card">
+                    <div class="card-image">
+                      <img
+                        src="${image}"
+                        alt="${name}"
+                      />
+                    </div>
+                    <div class="card-text">
+                      <h3>${name}</h3>
+                      <p>${role}</p>
+                    </div>
+                  </div>`;
+  document.querySelector('.team-container').innerHTML += nuovaCard;
+  }
